@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>404 Page Demo</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="content">
+            <h1>Oops! Something went wrong</h1>
+            <p>This page doesn't exist!! Error code: 404</p>
+            <!-- 403 - You don't have permission to use this page -->
+            <!-- 500 -->
+            <button>Home Page</button>
+        </div>
+        <div class="img">
+            <canvas id="canvas" width="700" height="700">
+            </canvas>
+        </div>
+    </div>
+    <script src="https://unpkg.com/@rive-app/canvas@1.0.98"></script>
+    <script>
+        let eartHover = false;
+        let marsHover = false;
+        const riveInstance = new rive.Rive({
+            src: "mars.riv",
+            // Or the path to a local Rive asset
+            // src: './example.riv',
+            canvas: document.getElementById("canvas"),
+            artboard: 'MarsArtBoard',
+            autoplay: true,
+            stateMachines: "AstronautOnMars",
+            onLoad: (_) => {
+                //rive.StateMachineInputType.Boolean
+                const isEarthHover = riveInstance.stateMachineInputs("EarthIsHover");
+                const isMarsHover = riveInstance.stateMachineInputs("MarsIsHover");
+
+            }
+        });
+    </script>
+</body>
+</html>
